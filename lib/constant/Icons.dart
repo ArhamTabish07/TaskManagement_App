@@ -1,3 +1,4 @@
+
 class IconConstants {
   static const _iconPath = 'assets/icons/';
   static const arrowright = '${_iconPath}arrow_right.png';
