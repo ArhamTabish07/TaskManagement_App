@@ -1,7 +1,7 @@
 import 'package:abc_app/components/custom_container.dart';
 import 'package:abc_app/components/text_style.dart';
 import 'package:abc_app/components/white_container.dart';
-import 'package:abc_app/constant/Icons.dart';
+import 'package:abc_app/constant/icons.dart';
 import 'package:abc_app/constant/colors.dart';
 import 'package:flutter/material.dart';
 
