@@ -15,7 +15,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           Container(
@@ -139,80 +138,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       color: Color(0xffDBEAFE),
                     ),
                   ),
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     CustomContainer(
-                  //       width: 64,
-                  //       height: 64,
-                  //       borderRadius: 16,
-                  //       image: Image.asset('assets/icons/Icon (1).png'),
-                  //     ),
-                  //     CustomContainer(
-                  //       width: 64,
-                  //       height: 64,
-                  //       borderRadius: 16,
-                  //       image: Image.asset('assets/icons/Icon (2).png'),
-                  //     ),
-                  //     CustomContainer(
-                  //       width: 64,
-                  //       height: 64,
-                  //       borderRadius: 16,
-                  //       image: Image.asset('assets/icons/Icon (3).png'),
-                  //     ),
-                  //   ],
-                  // ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     Text(
-                  //       'Attendance',
-                  //       style: primaryTextStyle(
-                  //         color: Color(0xffDBEAFE),
-                  //         weight: FontWeight.w400,
-                  //         size: 14,
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       'Tasks',
-                  //       style: primaryTextStyle(
-                  //         color: Color(0xffDBEAFE),
-                  //         weight: FontWeight.w400,
-                  //         size: 14,
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       'Teams',
-                  //       style: primaryTextStyle(
-                  //         color: Color(0xffDBEAFE),
-                  //         weight: FontWeight.w400,
-                  //         size: 14,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
           ),
         ],
       ),
-      // Container(
-      //   decoration: BoxDecoration(
-      //     image: DecorationImage(
-      //       image: AssetImage(
-      //         'assets/images/Attendance and Task Management App.png',
-      //       ),
-      //       fit: BoxFit.cover,
-      //     ),
-      //   ),
-      //   child: Stack(
-      //     children: [
-      //       Column(children: [Container(height: 100, width: 100)]),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

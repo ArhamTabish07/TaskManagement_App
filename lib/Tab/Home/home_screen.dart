@@ -1,5 +1,6 @@
 import 'package:abc_app/Onboarding/provider/user_provider.dart';
 import 'package:abc_app/Tab/Home/widgets/group_card.dart';
+import 'package:abc_app/components/bottom_nav_bar.dart';
 import 'package:abc_app/constant/Icons.dart';
 import 'package:abc_app/constant/colors.dart';
 import 'package:abc_app/components/custom_auth_card.dart';
@@ -186,6 +187,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
