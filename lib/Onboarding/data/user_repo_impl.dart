@@ -1,6 +1,6 @@
-import 'package:abc_app/Onboarding/data/user_data_source.dart';
-import 'package:abc_app/Onboarding/domain/user_repo.dart';
-import 'package:abc_app/Onboarding/model/user_model.dart';
+import 'package:abc_app/onboarding/data/user_data_source.dart';
+import 'package:abc_app/onboarding/domain/user_repo.dart';
+import 'package:abc_app/onboarding/model/user_model.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserDatasource datasource;

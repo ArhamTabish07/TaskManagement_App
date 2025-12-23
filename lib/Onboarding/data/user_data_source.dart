@@ -1,4 +1,4 @@
-import 'package:abc_app/Onboarding/model/user_model.dart';
+import 'package:abc_app/onboarding/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

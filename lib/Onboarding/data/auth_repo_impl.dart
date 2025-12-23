@@ -1,5 +1,5 @@
-import 'package:abc_app/Onboarding/data/auth_service.dart';
-import 'package:abc_app/Onboarding/domain/auth_repo.dart';
+import 'package:abc_app/onboarding/data/auth_data_source.dart';
+import 'package:abc_app/onboarding/domain/auth_repo.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl implements AuthRepo {

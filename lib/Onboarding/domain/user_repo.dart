@@ -1,4 +1,4 @@
-import 'package:abc_app/Onboarding/model/user_model.dart';
+import 'package:abc_app/onboarding/model/user_model.dart';
 
 abstract class UserRepository {
   /// uid of currently logged-in Firebase user

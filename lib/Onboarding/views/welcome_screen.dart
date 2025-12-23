@@ -1,7 +1,7 @@
-import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
-import 'package:abc_app/components/custom_button.dart';
-import 'package:abc_app/components/custom_icon_container.dart';
-import 'package:abc_app/components/text_style.dart';
+import 'package:abc_app/core/constant/color_constant.dart';
+import 'package:abc_app/core/components/custom_button.dart';
+import 'package:abc_app/core/components/custom_icon_container.dart';
+import 'package:abc_app/core/components/text_style.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {

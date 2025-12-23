@@ -1,12 +1,12 @@
-import 'package:abc_app/Onboarding/provider/authentication_provider.dart';
-import 'package:abc_app/Onboarding/views/signup_screen.dart';
-import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
-import 'package:abc_app/components/custom_auth_card.dart';
-import 'package:abc_app/components/custom_button.dart';
-import 'package:abc_app/components/custom_icon_container.dart';
-import 'package:abc_app/components/custom_textfield.dart';
-import 'package:abc_app/service/navigation_service.dart';
-import 'package:abc_app/components/text_style.dart';
+import 'package:abc_app/core/service/navigation_service.dart';
+import 'package:abc_app/onboarding/provider/auth_provider.dart';
+import 'package:abc_app/onboarding/views/signup_screen.dart';
+import 'package:abc_app/core/constant/color_constant.dart';
+import 'package:abc_app/core/components/custom_auth_card.dart';
+import 'package:abc_app/core/components/custom_button.dart';
+import 'package:abc_app/core/components/custom_icon_container.dart';
+import 'package:abc_app/core/components/custom_textfield.dart';
+import 'package:abc_app/core/components/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _form = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
-  bool _obscure = true;
 
   @override
   void dispose() {
