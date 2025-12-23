@@ -1,4 +1,4 @@
-import 'package:abc_app/constant/colors.dart';
+import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
 import 'package:flutter/material.dart';
 
 TextStyle primaryTextStyle({

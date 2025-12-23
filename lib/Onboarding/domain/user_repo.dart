@@ -5,7 +5,7 @@ abstract class UserRepository {
   String? currentUid();
 
   /// Save / update user profile in Firestore
-  Future<void> saveUser(UserModel user);
+  Future<void> createUser(UserModel user);
 
   /// Get user profile by uid from Firestore
   Future<UserModel> getUser(String uid);

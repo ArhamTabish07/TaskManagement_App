@@ -59,7 +59,7 @@ class UserProvider with ChangeNotifier {
           _currentUser = user;
 
           // Optionally persist it to Firestore so next time it comes from DB
-          await userRepo.saveUser(user);
+          await userRepo.createUser(user);
         } else {
           _currentUser = UserModel.empty();
         }
@@ -86,7 +86,7 @@ class UserProvider with ChangeNotifier {
 
     final user = UserModel(uid: uid, email: email, name: name ?? '', image: '');
 
-    await userRepo.saveUser(user);
+    await userRepo.createUser(user);
     _currentUser = user;
     notifyListeners();
   }

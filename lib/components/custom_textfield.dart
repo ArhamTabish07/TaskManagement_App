@@ -1,3 +1,4 @@
+import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextfield extends StatelessWidget {
@@ -25,6 +26,7 @@ class CustomTextfield extends StatelessWidget {
       validator: validator,
       controller: controller,
       decoration: InputDecoration(
+        fillColor: ColorConstant.textfieldfill,
         prefixIcon: prefixIcon,
         hint: hint,
         suffix: suffix,

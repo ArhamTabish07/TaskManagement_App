@@ -1,9 +1,9 @@
 import 'package:abc_app/Onboarding/provider/authentication_provider.dart';
 import 'package:abc_app/Onboarding/views/signup_screen.dart';
-import 'package:abc_app/constant/colors.dart';
+import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
 import 'package:abc_app/components/custom_auth_card.dart';
 import 'package:abc_app/components/custom_button.dart';
-import 'package:abc_app/components/custom_container.dart';
+import 'package:abc_app/components/custom_icon_container.dart';
 import 'package:abc_app/components/custom_textfield.dart';
 import 'package:abc_app/service/navigation_service.dart';
 import 'package:abc_app/components/text_style.dart';
@@ -34,179 +34,185 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final auth = context.watch<AuthenticationProvider>();
 
-    return Scaffold(
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
+    return SafeArea(
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Scaffold(
+          body: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomCard(),
-              Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: Center(
-                  child: Column(
-                    children: [
-                      CustomContainer(
-                        ContainerColor: ColorConstant.containerwhite,
-                        width: 64,
-                        height: 64,
-                        borderRadius: 16,
-                        image: Image.asset('assets/icons/logo.png'),
+              Stack(
+                children: [
+                  CustomCard(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 32),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          CustomiconContainer(
+                            // ContainerColor: ColorConstant.iconcontainerwhite,
+                            width: 64,
+                            height: 64,
+                            borderRadius: 16,
+                            icon: Image.asset('assets/icons/logo.png'),
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            'Welcome Back',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(height: 12),
+                          Text(
+                            'Sign in to continue',
+                            style: arimoTextStyle(
+                              color: Colors.white,
+                              size: 16,
+                              weight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 16),
-                      Text(
-                        'Welcome Back',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w400,
-                        ),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 24.0,
+                      top: 32,
+                      right: 24,
+                      // bottom: 32,
+                    ),
+                    child: Form(
+                      key: _form,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Email Address',
+                            style: arimoTextStyle(
+                              color: ColorConstant.darkgrey,
+                              size: 14,
+                              weight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          CustomTextfield(
+                            controller: _email,
+                            validator: (value) => value == null || value.isEmpty
+                                ? 'Please enter Email'
+                                : null,
+                            hint: Text(
+                              'john.smith@company.com',
+                              style: arimoTextStyle(
+                                size: 18,
+                                weight: FontWeight.w400,
+                                color: ColorConstant.grey,
+                              ),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.email_outlined,
+                              color: ColorConstant.lightgrey,
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'Password',
+                            style: arimoTextStyle(
+                              color: ColorConstant.darkgrey,
+                              size: 14,
+                              weight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          CustomTextfield(
+                            validator: (value) => value == null || value.isEmpty
+                                ? 'Please enter Password'
+                                : null,
+                            controller: _password,
+                            obscureText: true,
+                            hint: Text(
+                              '••••••••',
+                              style: arimoTextStyle(
+                                size: 18,
+                                weight: FontWeight.w400,
+                                color: ColorConstant.grey,
+                              ),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.lock_outlined,
+                              color: ColorConstant.lightgrey,
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              'Forgot Password?',
+                              style: arimoTextStyle(
+                                size: 14,
+                                weight: FontWeight.w400,
+                                color: ColorConstant.blue,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          CustomButton(
+                            text: 'Sign In',
+                            width: double.infinity,
+                            onTap: () {
+                              if (_form.currentState!.validate()) {
+                                auth.login(_email.text.trim(), _password.text);
+                              }
+                            },
+                          ),
+                          // Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Don't have an account?",
+                                style: arimoTextStyle(
+                                  size: 16,
+                                  color: ColorConstant.darkgrey,
+                                  weight: FontWeight.w400,
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  NavigationService().navigateToScreen(
+                                    nextScreen: SignupScreen(),
+                                  );
+                                },
+                                child: Text(
+                                  "Sign Up",
+                                  style: arimoTextStyle(
+                                    size: 16,
+                                    color: ColorConstant.blue,
+                                    weight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 33),
+                        ],
                       ),
-                      SizedBox(height: 12),
-                      Text(
-                        'Sign in to continue',
-                        style: arimoTextStyle(
-                          color: Colors.white,
-                          size: 16,
-                          weight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 24.0,
-                  top: 32,
-                  right: 24,
-                  // bottom: 32,
-                ),
-                child: Form(
-                  key: _form,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Email Address',
-                        style: arimoTextStyle(
-                          color: ColorConstant.darkgrey,
-                          size: 14,
-                          weight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      CustomTextfield(
-                        controller: _email,
-                        validator: (value) => value == null || value.isEmpty
-                            ? 'Please enter Email'
-                            : null,
-                        hint: Text(
-                          'john.smith@company.com',
-                          style: arimoTextStyle(
-                            size: 18,
-                            weight: FontWeight.w400,
-                            color: ColorConstant.lightgrey,
-                          ),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.email_outlined,
-                          color: ColorConstant.icongrey,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        'Password',
-                        style: arimoTextStyle(
-                          color: ColorConstant.darkgrey,
-                          size: 14,
-                          weight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      CustomTextfield(
-                        validator: (value) => value == null || value.isEmpty
-                            ? 'Please enter Password'
-                            : null,
-                        controller: _password,
-                        obscureText: true,
-                        hint: Text(
-                          '••••••••',
-                          style: arimoTextStyle(
-                            size: 18,
-                            weight: FontWeight.w400,
-                            color: ColorConstant.lightgrey,
-                          ),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.lock_outlined,
-                          color: ColorConstant.icongrey,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          'Forgot Password?',
-                          style: arimoTextStyle(
-                            size: 14,
-                            weight: FontWeight.w400,
-                            color: ColorConstant.blue,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      CustomButton(
-                        text: 'Sign In',
-                        width: double.infinity,
-                        onTap: () {
-                          if (_form.currentState!.validate()) {
-                            auth.login(_email.text.trim(), _password.text);
-                          }
-                        },
-                      ),
-                      // Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have an account?",
-                            style: arimoTextStyle(
-                              size: 16,
-                              color: ColorConstant.darkgrey,
-                              weight: FontWeight.w400,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              NavigationService().navigateToScreen(
-                                nextScreen: SignupScreen(),
-                              );
-                            },
-                            child: Text(
-                              "Sign Up",
-                              style: arimoTextStyle(
-                                size: 16,
-                                color: ColorConstant.blue,
-                                weight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 33),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

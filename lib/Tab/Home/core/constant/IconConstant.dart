@@ -1,6 +1,6 @@
-
 class IconConstants {
   static const _iconPath = 'assets/icons/';
+  static const defaultgrouplogo = '${_iconPath}group_default_logo.png';
   static const arrowright = '${_iconPath}arrow_right.png';
   static const bell = '${_iconPath}bell.png';
   static const calendar = '${_iconPath}calendar.png';

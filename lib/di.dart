@@ -1,3 +1,4 @@
+import 'package:abc_app/Onboarding/data/user_data_source.dart';
 import 'package:get_it/get_it.dart';
 import 'package:abc_app/Onboarding/data/auth_service.dart';
 import 'package:abc_app/Onboarding/data/auth_repo_impl.dart';
@@ -17,7 +18,9 @@ Future<void> setupDI() async {
     () => AuthRepoImpl(authService: DI<AuthService>()),
   );
 
-  DI.registerLazySingleton<UserRepository>(() => UserRepositoryImpl());
+  DI.registerLazySingleton<UserRepository>(
+    () => UserRepositoryImpl(datasource: UserDatasource()),
+  );
 
   // Providers
   DI.registerLazySingleton<UserProvider>(

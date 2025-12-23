@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white, // your app bg
+        ),
         debugShowCheckedModeBanner: false,
         home: const LoginScreen(),
         navigatorKey: NavigationService.navigatorKey,

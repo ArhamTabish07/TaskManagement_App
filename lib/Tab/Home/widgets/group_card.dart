@@ -1,8 +1,7 @@
-import 'package:abc_app/components/custom_container.dart';
+import 'package:abc_app/Tab/Home/core/constant/IconConstant.dart';
 import 'package:abc_app/components/text_style.dart';
 import 'package:abc_app/components/white_container.dart';
-import 'package:abc_app/constant/icons.dart';
-import 'package:abc_app/constant/colors.dart';
+import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
 import 'package:flutter/material.dart';
 
 class GroupCard extends StatelessWidget {
@@ -19,11 +18,10 @@ class GroupCard extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    CustomContainer(
+                    Image.asset(
+                      IconConstants.defaultgrouplogo,
                       width: 56,
                       height: 56,
-                      borderRadius: 16,
-                      image: Image.asset(IconConstants.people),
                     ),
                   ],
                 ),
@@ -56,12 +54,12 @@ class GroupCard extends StatelessWidget {
             SizedBox(height: 12),
             Row(
               children: [
-                Image.asset(IconConstants.membericon),
+                // Image.asset(IconConstants.defaultgrouplogo),
                 SizedBox(width: 8),
                 Text(
                   '24 members',
                   style: primaryTextStyle(
-                    color: ColorConstant.lightgrey,
+                    color: ColorConstant.grey,
                     size: 14,
                     weight: FontWeight.w400,
                   ),

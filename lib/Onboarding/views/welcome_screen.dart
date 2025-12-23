@@ -1,6 +1,6 @@
-import 'package:abc_app/constant/colors.dart';
+import 'package:abc_app/Tab/Home/core/constant/ColorConstant.dart';
 import 'package:abc_app/components/custom_button.dart';
-import 'package:abc_app/components/custom_container.dart';
+import 'package:abc_app/components/custom_icon_container.dart';
 import 'package:abc_app/components/text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -32,12 +32,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               padding: const EdgeInsets.only(top: 176.0),
               child: Column(
                 children: [
-                  CustomContainer(
-                    ContainerColor: ColorConstant.containerwhite,
+                  CustomiconContainer(
+                    // ContainerColor: ColorConstant.iconcontainerwhite,
                     height: 95,
                     width: 95,
                     borderRadius: 24,
-                    image: Image.asset('assets/icons/Icon.png'),
+                    icon: Image.asset('assets/icons/Icon.png'),
                   ),
                   SizedBox(height: 24),
                   Text(
@@ -64,12 +64,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       Column(
                         children: [
-                          CustomContainer(
-                            ContainerColor: ColorConstant.containerwhite,
+                          CustomiconContainer(
+                            // ContainerColor: ColorConstant.iconcontainerwhite,
                             width: 64,
                             height: 64,
                             borderRadius: 16,
-                            image: Image.asset('assets/icons/Icon (1).png'),
+                            icon: Image.asset('assets/icons/Icon (1).png'),
                           ),
                           SizedBox(height: 8),
                           Text(
@@ -84,12 +84,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                       Column(
                         children: [
-                          CustomContainer(
-                            ContainerColor: ColorConstant.containerwhite,
+                          CustomiconContainer(
+                            // ContainerColor: ColorConstant.iconcontainerwhite,
                             width: 64,
                             height: 64,
                             borderRadius: 16,
-                            image: Image.asset('assets/icons/Icon (2).png'),
+                            icon: Image.asset('assets/icons/Icon (2).png'),
                           ),
                           Text(
                             'Tasks',
@@ -103,12 +103,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                       Column(
                         children: [
-                          CustomContainer(
-                            ContainerColor: ColorConstant.containerwhite,
+                          CustomiconContainer(
+                            // ContainerColor: ColorConstant.iconcontainerwhite,
                             width: 64,
                             height: 64,
                             borderRadius: 16,
-                            image: Image.asset('assets/icons/Icon (3).png'),
+                            icon: Image.asset('assets/icons/Icon (3).png'),
                           ),
                           Text(
                             'Teams',
