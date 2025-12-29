@@ -1,9 +1,9 @@
-import 'package:abc_app/core/components/custom_button.dart';
-import 'package:abc_app/core/components/text_style.dart';
-import 'package:abc_app/core/components/white_container.dart';
-import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/constant/icon_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/components/custom_button.dart';
+import 'package:task_management_app/core/components/text_style.dart';
+import 'package:task_management_app/core/components/white_container.dart';
+import 'package:task_management_app/core/constant/color_constant.dart';
+import 'package:task_management_app/core/constant/icon_constant.dart';
 
 class SubscriptionPlanCard extends StatelessWidget {
   final String planType;
@@ -161,7 +161,7 @@ class SubscriptionPlanCard extends StatelessWidget {
             CustomButton(
               text: 'Subscribe Now',
               height: 48,
-              textsize: 14,
+
               textcolor: Colors.white,
             ),
           ],

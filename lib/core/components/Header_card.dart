@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HeaderCard extends StatelessWidget {
   final double? height;
-  HeaderCard({super.key, this.height});
+  const HeaderCard({super.key, this.height});
 
   @override
   Widget build(BuildContext context) {

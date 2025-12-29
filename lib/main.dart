@@ -1,13 +1,12 @@
-import 'package:abc_app/core/service/navigation_service.dart';
-import 'package:abc_app/nav_bar/main_shell.dart';
-import 'package:abc_app/onboarding/provider/auth_provider.dart';
-import 'package:abc_app/onboarding/provider/user_provider.dart';
-import 'package:abc_app/onboarding/views/login_screen.dart';
-import 'package:abc_app/core/dependency_injection/di.dart';
-import 'package:abc_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_management_app/core/dependency_injection/di.dart';
+import 'package:task_management_app/core/service/navigation_service.dart';
+import 'package:task_management_app/firebase_options.dart';
+import 'package:task_management_app/nav_bar/main_shell.dart';
+import 'package:task_management_app/onboarding/provider/auth_provider.dart';
+import 'package:task_management_app/onboarding/provider/user_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

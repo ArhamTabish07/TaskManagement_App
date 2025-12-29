@@ -1,12 +1,12 @@
-import 'package:abc_app/core/components/Header_card.dart';
-import 'package:abc_app/onboarding/provider/auth_provider.dart';
-import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/components/custom_button.dart';
-import 'package:abc_app/core/components/custom_icon_container.dart';
-import 'package:abc_app/core/components/custom_textfield.dart';
-import 'package:abc_app/core/components/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_management_app/core/components/Header_card.dart';
+import 'package:task_management_app/core/components/custom_button.dart';
+import 'package:task_management_app/core/components/custom_icon_container.dart';
+import 'package:task_management_app/core/components/custom_textfield.dart';
+import 'package:task_management_app/core/components/text_style.dart';
+import 'package:task_management_app/core/constant/color_constant.dart';
+import 'package:task_management_app/onboarding/provider/auth_provider.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});

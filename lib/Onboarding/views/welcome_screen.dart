@@ -1,8 +1,7 @@
-import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/components/custom_button.dart';
-import 'package:abc_app/core/components/custom_icon_container.dart';
-import 'package:abc_app/core/components/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/components/custom_button.dart';
+import 'package:task_management_app/core/components/custom_icon_container.dart';
+import 'package:task_management_app/core/components/text_style.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

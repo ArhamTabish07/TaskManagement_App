@@ -1,14 +1,13 @@
-import 'package:abc_app/core/components/Header_card.dart';
-import 'package:abc_app/core/components/custom_icon_container.dart';
-import 'package:abc_app/core/components/custom_info_container.dart';
-import 'package:abc_app/core/components/custom_textfield.dart';
-import 'package:abc_app/core/components/text_style.dart';
-import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/constant/icon_constant.dart';
-import 'package:abc_app/core/service/navigation_service.dart';
-import 'package:abc_app/nav_bar/Home/Group/create_group_screen.dart';
-import 'package:abc_app/nav_bar/Home/widgets/group_card.dart';
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/components/Header_card.dart';
+import 'package:task_management_app/core/components/custom_icon_container.dart';
+import 'package:task_management_app/core/components/custom_textfield.dart';
+import 'package:task_management_app/core/components/text_style.dart';
+import 'package:task_management_app/core/constant/color_constant.dart';
+import 'package:task_management_app/nav_bar/Home/widgets/group_card.dart';
+import 'package:task_management_app/nav_bar/Subscription/widgets/subscription_tab.dart';
+
+// <-- if your AppSegmentedTab file name differs, change it
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -18,6 +17,8 @@ class MessageScreen extends StatefulWidget {
 }
 
 class _MessageScreenState extends State<MessageScreen> {
+  int selectedIndex = 0; // 0 = Group Chats, 1 = Direct
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -67,7 +68,7 @@ class _MessageScreenState extends State<MessageScreen> {
                               borderRadius: 100,
                               icon: IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.add,
                                   color: Colors.white,
                                   size: 24,
@@ -77,6 +78,7 @@ class _MessageScreenState extends State<MessageScreen> {
                           ],
                         ),
                         const SizedBox(height: 24),
+
                         CustomTextfield(
                           prefixIcon: Icon(
                             Icons.search,
@@ -92,7 +94,8 @@ class _MessageScreenState extends State<MessageScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
+
+                        // ✅ segmented tab
                       ],
                     ),
                   ),
@@ -104,41 +107,56 @@ class _MessageScreenState extends State<MessageScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text('My Groups', style: primaryTextStyle(size: 20)),
-                        const Spacer(),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(200),
-                            gradient: const LinearGradient(
-                              colors: [Color(0xff155DFC), Color(0xff9810FA)],
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              NavigationService().navigateToScreen(
-                                nextScreen: CreateGroupScreen(),
-                              );
-                            },
-                            icon: const Icon(Icons.add, color: Colors.white),
-                          ),
+                    AppSegmentedTab(
+                      selectedIndex: selectedIndex,
+                      onChanged: (i) => setState(() => selectedIndex = i),
+                      items: const [
+                        AppSegmentedTabItem(
+                          label: 'Group Chats',
+                          icon: Icon(Icons.group),
+                        ),
+                        AppSegmentedTabItem(
+                          label: 'Direct',
+                          icon: Icon(Icons.chat_bubble_outline),
                         ),
                       ],
+
+                      // container look
+                      height: 56,
+                      borderRadius: 14,
+                      backgroundColor: Colors.white, // outer container bg
+                      borderColor: const Color(0xFFE5E7EB),
+
+                      // selected = gradient
+                      selectedGradient: const LinearGradient(
+                        colors: [Color(0xFF155DFC), Color(0xFF9810FA)],
+                      ),
+                      selectedColor: null,
+                      selectedTextColor: Colors.white,
+                      selectedIconColor: Colors.white,
+
+                      // unselected = WHITE background (like your design)
+                      unselectedItemColor: Colors.white,
+                      unselectedTextColor: const Color(0xFF6B7280),
+                      unselectedIconColor: const Color(0xFF6B7280),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 24),
 
-                    GroupCard(),
-                    const SizedBox(height: 16),
-                    GroupCard(),
-                    const SizedBox(height: 16),
-                    GroupCard(),
-                    const SizedBox(height: 16),
-                    GroupCard(),
-                    const SizedBox(height: 16),
-                    GroupCard(),
+                    // ✅ change content based on tab
+                    if (selectedIndex == 0) ...[
+                      GroupCard(),
+                      const SizedBox(height: 16),
+                      GroupCard(),
+                      const SizedBox(height: 16),
+                      GroupCard(),
+                    ] else ...[
+                      // Direct chats list (replace with your widget)
+                      GroupCard(),
+                      const SizedBox(height: 16),
+                      GroupCard(),
+                    ],
 
-                    const SizedBox(height: 24), // bottom padding for scroll
+                    const SizedBox(height: 24),
                   ],
                 ),
               ),

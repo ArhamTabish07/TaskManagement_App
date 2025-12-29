@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/components/text_style.dart';
+import 'package:task_management_app/core/components/text_style.dart';
+import 'package:task_management_app/core/constant/color_constant.dart';
 
 class UploadCard extends StatefulWidget {
   final ValueChanged<XFile?>? onPicked;

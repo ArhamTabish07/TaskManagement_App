@@ -1,6 +1,6 @@
 import 'dart:developer';
-import 'package:abc_app/core/service/firebase_error_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:task_management_app/core/service/firebase_error_handler.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

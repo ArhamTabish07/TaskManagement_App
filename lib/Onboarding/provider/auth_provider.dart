@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:abc_app/core/service/navigation_service.dart';
-import 'package:abc_app/nav_bar/Home/home_screen.dart';
-import 'package:abc_app/onboarding/domain/auth_repo.dart';
-import 'package:abc_app/onboarding/provider/user_provider.dart';
+
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/service/navigation_service.dart';
+import 'package:task_management_app/nav_bar/Home/home_screen.dart';
+import 'package:task_management_app/onboarding/domain/auth_repo.dart';
+import 'package:task_management_app/onboarding/provider/user_provider.dart';
 
 class AuthenticationProvider with ChangeNotifier {
   final AuthRepo authRepo;

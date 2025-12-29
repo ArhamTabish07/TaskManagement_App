@@ -1,6 +1,6 @@
-import 'package:abc_app/onboarding/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:task_management_app/onboarding/model/user_model.dart';
 
 class UserDatasource {
   final FirebaseAuth _auth = FirebaseAuth.instance;

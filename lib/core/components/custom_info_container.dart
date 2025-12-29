@@ -1,6 +1,6 @@
-import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/extension/size_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/constant/color_constant.dart';
+import 'package:task_management_app/core/extension/size_extension.dart';
 
 class CustomInfoContainer extends StatelessWidget {
   // final double width;

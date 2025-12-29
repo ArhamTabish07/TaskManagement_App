@@ -1,10 +1,15 @@
-import 'package:abc_app/core/components/Header_card.dart';
-import 'package:abc_app/core/components/custom_icon_container.dart';
-import 'package:abc_app/core/components/text_style.dart';
-import 'package:abc_app/core/constant/icon_constant.dart';
-import 'package:abc_app/nav_bar/Subscription/widgets/subscription_plan_card.dart';
-import 'package:abc_app/nav_bar/Subscription/widgets/subscription_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/components/Header_card.dart';
+import 'package:task_management_app/core/components/custom_icon_container.dart';
+import 'package:task_management_app/core/components/text_style.dart';
+import 'package:task_management_app/core/constant/color_constant.dart';
+import 'package:task_management_app/core/constant/icon_constant.dart';
+import 'package:task_management_app/nav_bar/Subscription/widgets/subscription_plan_card.dart';
+import 'package:task_management_app/nav_bar/Subscription/widgets/subscription_tab.dart';
+
+// ✅ reuse this import where you placed AppSegmentedTab
+
+enum BillingCycle { monthly, yearly }
 
 class SubscriptionScreen extends StatefulWidget {
   const SubscriptionScreen({super.key});
@@ -76,15 +81,36 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           ),
                         ],
                       ),
-
                       const SizedBox(height: 24),
 
-                      // ✅ Monthly / Yearly toggle
-                      SubscriptionTab(
-                        value: cycle,
-                        onChanged: (newCycle) {
-                          setState(() => cycle = newCycle);
+                      // ✅ segmented tab
+                      AppSegmentedTab(
+                        selectedIndex: cycle == BillingCycle.monthly ? 0 : 1,
+                        onChanged: (i) {
+                          setState(() {
+                            cycle = i == 0
+                                ? BillingCycle.monthly
+                                : BillingCycle.yearly;
+                          });
                         },
+                        items: const [
+                          AppSegmentedTabItem(label: 'Monthly'),
+                          AppSegmentedTabItem(label: 'Yearly'),
+                        ],
+
+                        height: 46,
+                        borderRadius: 14,
+
+                        backgroundColor: ColorConstant.infocontainerwhite,
+                        borderColor: Colors.white.withOpacity(0.22),
+
+                        selectedColor: Colors.white,
+                        selectedGradient: null,
+                        selectedTextColor: ColorConstant.blue,
+
+                        unselectedItemColor: Colors.transparent,
+                        unselectedTextColor: Colors.white,
+                        unselectedIconColor: Colors.white,
                       ),
 
                       const SizedBox(height: 16),

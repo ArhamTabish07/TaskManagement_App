@@ -1,9 +1,8 @@
-import 'package:abc_app/core/components/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/components/text_style.dart';
 
 class CustomButton extends StatelessWidget {
   final double? width;
-  final double? textsize;
   final double? height;
   final double? borderwidth;
   final Color? bordercolor;
@@ -24,7 +23,6 @@ class CustomButton extends StatelessWidget {
     required this.text,
     this.borderwidth,
     this.bordercolor,
-    this.textsize,
   });
 
   @override
@@ -51,7 +49,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: primaryTextStyle(
               weight: FontWeight.w500,
-              size: textsize ?? 18,
+              size: 18,
               color: textcolor ?? Colors.white,
             ),
           ),
