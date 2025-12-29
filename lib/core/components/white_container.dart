@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class WhiteContainer extends StatelessWidget {
   final Widget? child;
-  const WhiteContainer({super.key, this.child});
+  final double? height;
+  const WhiteContainer({super.key, this.child, this.height});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      height: 121,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,

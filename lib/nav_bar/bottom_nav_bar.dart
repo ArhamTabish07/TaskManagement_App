@@ -1,48 +1,156 @@
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+class BottomNavBar extends StatelessWidget {
+  final int currentIndex;
+  final ValueChanged<int> onChanged;
 
-  @override
-  State<BottomNavBar> createState() => _SimpleBottomNavState();
-}
+  const BottomNavBar({
+    super.key,
+    required this.currentIndex,
+    required this.onChanged,
+  });
 
-class _SimpleBottomNavState extends State<BottomNavBar> {
-  int _currentIndex = 0;
+  static const _gradient = LinearGradient(
+    colors: [Color(0xFF155DFC), Color(0xFF9810FA)],
+  );
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFF6D28D9),
-      unselectedItemColor: const Color(0xFF9CA3AF),
-      showUnselectedLabels: true,
+    final bottom = MediaQuery.of(context).padding.bottom;
 
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_month_rounded),
-          label: 'Calendar',
+    return Container(
+      padding: EdgeInsets.fromLTRB(14, 10, 14, 10 + bottom),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 14,
+            offset: Offset(0, -2),
+            color: Color(0x14000000),
+          ),
+        ],
+      ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          const itemCount = 4;
+          const gap = 10.0;
+
+          final totalGap = gap * (itemCount - 1);
+          final itemWidth = (constraints.maxWidth - totalGap) / itemCount;
+
+          // move pill by (itemWidth + gap) each index
+          final pillLeft = currentIndex * (itemWidth + gap);
+
+          return SizedBox(
+            height: 52,
+            child: Stack(
+              children: [
+                // ✅ sliding pill
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 260),
+                  curve: Curves.easeOutCubic,
+                  left: pillLeft,
+                  top: 0,
+                  bottom: 0,
+                  width: itemWidth,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: _gradient,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+
+                // tabs row
+                Row(
+                  children: [
+                    _Item(
+                      width: itemWidth,
+                      label: "Home",
+                      icon: Icons.home_rounded,
+                      selected: currentIndex == 0,
+                      onTap: () => onChanged(0),
+                    ),
+                    const SizedBox(width: gap),
+                    _Item(
+                      width: itemWidth,
+                      label: "Subscription",
+                      icon: Icons.credit_card_rounded,
+                      selected: currentIndex == 1,
+                      onTap: () => onChanged(1),
+                    ),
+                    const SizedBox(width: gap),
+                    _Item(
+                      width: itemWidth,
+                      label: "Messages",
+                      icon: Icons.chat,
+                      selected: currentIndex == 2,
+                      onTap: () => onChanged(2),
+                    ),
+                    const SizedBox(width: gap),
+                    _Item(
+                      width: itemWidth,
+                      label: "Profile",
+                      icon: Icons.person_outline_rounded,
+                      selected: currentIndex == 3,
+                      onTap: () => onChanged(3),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _Item extends StatelessWidget {
+  final double width;
+  final String label;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _Item({
+    required this.width,
+    required this.label,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final unselected = const Color(0xFF9CA3AF);
+
+    return SizedBox(
+      width: width,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 20, color: selected ? Colors.white : unselected),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11,
+                  height: 1.0,
+                  fontWeight: FontWeight.w500,
+                  color: selected ? Colors.white : unselected,
+                ),
+              ),
+            ],
+          ),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.subscriptions_outlined),
-          label: 'Subscription',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.chat_bubble_outline_rounded),
-          label: 'Messages',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline_rounded),
-          label: 'Profile',
-        ),
-      ],
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CustomCard extends StatelessWidget {
+class HeaderCard extends StatelessWidget {
   final double? height;
-  CustomCard({super.key, this.height});
+  HeaderCard({super.key, this.height});
 
   @override
   Widget build(BuildContext context) {

@@ -10,6 +10,7 @@ class GroupCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WhiteContainer(
+      height: 121,
       child: Padding(
         padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
         child: Column(

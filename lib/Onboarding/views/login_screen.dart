@@ -1,8 +1,8 @@
+import 'package:abc_app/core/components/Header_card.dart';
 import 'package:abc_app/core/service/navigation_service.dart';
 import 'package:abc_app/onboarding/provider/auth_provider.dart';
 import 'package:abc_app/onboarding/views/signup_screen.dart';
 import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/components/custom_auth_card.dart';
 import 'package:abc_app/core/components/custom_button.dart';
 import 'package:abc_app/core/components/custom_icon_container.dart';
 import 'package:abc_app/core/components/custom_textfield.dart';
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Stack(
                 children: [
-                  CustomCard(),
+                  HeaderCard(),
                   Padding(
                     padding: const EdgeInsets.only(top: 32),
                     child: Center(

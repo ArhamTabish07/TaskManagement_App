@@ -1,6 +1,6 @@
 import 'package:abc_app/core/components/custom_description_field.dart';
 import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/components/custom_auth_card.dart';
+import 'package:abc_app/core/components/Header_card.dart';
 import 'package:abc_app/core/components/custom_button.dart';
 import 'package:abc_app/core/components/custom_icon_container.dart';
 import 'package:abc_app/core/components/custom_textfield.dart';
@@ -35,228 +35,214 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
         behavior: HitTestBehavior.translucent,
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          body: Column(
-            children: [
-              Stack(
-                children: [
-                  CustomCard(),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 24,
-                      right: 24,
-                      left: 24,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomiconContainer(
-                          // ContainerColor: ColorConstant.iconcontainerwhite,
-                          width: 50,
-                          height: 50,
-                          borderRadius: 100,
-                          icon: IconButton(
-                            onPressed: () {
-                              NavigationService().pop();
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          'Create Group',
-                          style: primaryTextStyle(
-                            color: Colors.white,
-                            size: 24,
-                            weight: FontWeight.w500,
-                          ),
-                        ),
-                        // SizedBox(height: 12),
-                        Text(
-                          'Set up your team workspace',
-                          style: primaryTextStyle(
-                            color: Colors.white,
-                            size: 16,
-                            weight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 24.0,
-                      top: 32,
-                      right: 24,
-                      // bottom: 32,
-                    ),
-                    child: Form(
-                      key: _form,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    HeaderCard(height: 212), // ✅ normal height (NOT 1870)
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 24,
+                        right: 24,
+                        left: 24,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          CustomiconContainer(
+                            width: 50,
+                            height: 50,
+                            borderRadius: 100,
+                            icon: IconButton(
+                              onPressed: () => NavigationService().pop(),
+                              icon: const Icon(
+                                Icons.arrow_back,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
                           Text(
-                            'Group Image',
+                            'Create Group',
                             style: primaryTextStyle(
-                              color: ColorConstant.darkgrey,
-                              size: 14,
+                              color: Colors.white,
+                              size: 24,
                               weight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(height: 8),
-                          UploadCard(
-                            onPicked: (file) {
-                              if (file != null) {
-                                // upload / save / show path
-                                print("Picked: ${file.path}");
-                              }
-                            },
-                          ),
-
-                          SizedBox(height: 20),
                           Text(
-                            'Group Name',
+                            'Set up your team workspace',
                             style: primaryTextStyle(
-                              color: ColorConstant.darkgrey,
-                              size: 14,
-                              weight: FontWeight.w500,
+                              color: Colors.white,
+                              size: 16,
+                              weight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(height: 8),
-                          CustomTextfield(
-                            validator: (value) => value == null || value.isEmpty
-                                ? 'Please enter Group Name'
-                                : null,
-                            controller: _groupname,
-                            hint: Text(
-                              'e.g. ABC Company',
-                              style: primaryTextStyle(
-                                size: 16,
-                                weight: FontWeight.w400,
-                                color: ColorConstant.grey,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Group Name',
-                            style: primaryTextStyle(
-                              color: ColorConstant.darkgrey,
-                              size: 14,
-                              weight: FontWeight.w500,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          CustomDescriptionField(
-                            hint: Text(
-                              'Brief description of your group...',
-                              style: primaryTextStyle(
-                                size: 16,
-                                weight: FontWeight.w400,
-                                color: ColorConstant.grey,
-                              ),
-                            ),
-                            controller: _description,
-                            validator: (v) => (v == null || v.trim().isEmpty)
-                                ? 'Please enter description'
-                                : null,
-                            maxLines: 2,
-                            minLines: 2,
-                          ),
-                          SizedBox(height: 20),
-                          Container(
-                            width: double.infinity,
-                            height: 130,
-                            decoration: BoxDecoration(
-                              color: ColorConstant.containerblue,
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                color: ColorConstant.lightblue,
-                                width: 0.77,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 17.0,
-                                left: 17,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'What happens next?',
-                                    style: primaryTextStyle(
-                                      size: 14,
-                                      weight: FontWeight.w400,
-                                      color: ColorConstant.darkblue,
-                                    ),
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    "•  You'll be set as grup owner",
-                                    style: primaryTextStyle(
-                                      size: 14,
-                                      weight: FontWeight.w400,
-                                      color: ColorConstant.blue,
-                                    ),
-                                  ),
-                                  Text(
-                                    '•  Invite members from group settings',
-                                    style: primaryTextStyle(
-                                      size: 14,
-                                      weight: FontWeight.w400,
-                                      color: ColorConstant.blue,
-                                    ),
-                                  ),
-                                  Text(
-                                    '•  Assign roles and manage attendance',
-                                    style: primaryTextStyle(
-                                      size: 14,
-                                      weight: FontWeight.w400,
-                                      color: ColorConstant.blue,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 35),
-
-                          CustomButton(
-                            text: 'Sign In',
-                            width: double.infinity,
-                            onTap: () {},
-                          ),
-                          SizedBox(height: 12),
-
-                          CustomButton(
-                            bordercolor: ColorConstant.black.withValues(
-                              alpha: 0.1,
-                            ),
-                            borderwidth: 0.77,
-                            buttoncolor: Colors.white,
-                            textcolor: ColorConstant.black,
-                            text: 'Cancel',
-                            width: double.infinity,
-                            onTap: () {},
-                          ),
-
-                          // Spacer(),
-                          SizedBox(height: 33),
                         ],
                       ),
                     ),
+                  ],
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 24, top: 32, right: 24),
+                  child: Form(
+                    key: _form,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Group Image',
+                          style: primaryTextStyle(
+                            color: ColorConstant.darkgrey,
+                            size: 14,
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        UploadCard(
+                          onPicked: (file) {
+                            if (file != null) {
+                              print("Picked: ${file.path}");
+                            }
+                          },
+                        ),
+
+                        const SizedBox(height: 20),
+                        Text(
+                          'Group Name',
+                          style: primaryTextStyle(
+                            color: ColorConstant.darkgrey,
+                            size: 14,
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        CustomTextfield(
+                          validator: (value) => value == null || value.isEmpty
+                              ? 'Please enter Group Name'
+                              : null,
+                          controller: _groupname,
+                          hint: Text(
+                            'e.g. ABC Company',
+                            style: primaryTextStyle(
+                              size: 16,
+                              weight: FontWeight.w400,
+                              color: ColorConstant.grey,
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 20),
+                        Text(
+                          'Description',
+                          style: primaryTextStyle(
+                            color: ColorConstant.darkgrey,
+                            size: 14,
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        CustomDescriptionField(
+                          hint: Text(
+                            'Brief description of your group...',
+                            style: primaryTextStyle(
+                              size: 16,
+                              weight: FontWeight.w400,
+                              color: ColorConstant.grey,
+                            ),
+                          ),
+                          controller: _description,
+                          validator: (v) => (v == null || v.trim().isEmpty)
+                              ? 'Please enter description'
+                              : null,
+                          maxLines: 2,
+                          minLines: 2,
+                        ),
+
+                        const SizedBox(height: 20),
+                        Container(
+                          width: double.infinity,
+                          height: 130,
+                          decoration: BoxDecoration(
+                            color: ColorConstant.containerblue,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: ColorConstant.lightblue,
+                              width: 0.77,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 17, left: 17),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'What happens next?',
+                                  style: primaryTextStyle(
+                                    size: 14,
+                                    weight: FontWeight.w400,
+                                    color: ColorConstant.darkblue,
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  "•  You'll be set as group owner",
+                                  style: primaryTextStyle(
+                                    size: 14,
+                                    weight: FontWeight.w400,
+                                    color: ColorConstant.blue,
+                                  ),
+                                ),
+                                Text(
+                                  '•  Invite members from group settings',
+                                  style: primaryTextStyle(
+                                    size: 14,
+                                    weight: FontWeight.w400,
+                                    color: ColorConstant.blue,
+                                  ),
+                                ),
+                                Text(
+                                  '•  Assign roles and manage attendance',
+                                  style: primaryTextStyle(
+                                    size: 14,
+                                    weight: FontWeight.w400,
+                                    color: ColorConstant.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 35),
+                        CustomButton(
+                          text: 'Create Group',
+                          width: double.infinity,
+                          onTap: () {},
+                        ),
+                        const SizedBox(height: 12),
+                        CustomButton(
+                          bordercolor: ColorConstant.black.withValues(
+                            alpha: 0.1,
+                          ),
+                          borderwidth: 0.77,
+                          buttoncolor: Colors.white,
+                          textcolor: ColorConstant.black,
+                          text: 'Cancel',
+                          width: double.infinity,
+                          onTap: () => NavigationService().pop(),
+                        ),
+
+                        const SizedBox(height: 33),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

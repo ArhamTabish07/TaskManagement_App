@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final double? width;
+  final double? textsize;
   final double? height;
   final double? borderwidth;
   final Color? bordercolor;
@@ -23,6 +24,7 @@ class CustomButton extends StatelessWidget {
     required this.text,
     this.borderwidth,
     this.bordercolor,
+    this.textsize,
   });
 
   @override
@@ -49,7 +51,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: primaryTextStyle(
               weight: FontWeight.w500,
-              size: 18,
+              size: textsize ?? 18,
               color: textcolor ?? Colors.white,
             ),
           ),

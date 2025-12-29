@@ -1,4 +1,5 @@
 import 'package:abc_app/core/service/navigation_service.dart';
+import 'package:abc_app/nav_bar/main_shell.dart';
 import 'package:abc_app/onboarding/provider/auth_provider.dart';
 import 'package:abc_app/onboarding/provider/user_provider.dart';
 import 'package:abc_app/onboarding/views/login_screen.dart';
@@ -29,11 +30,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white, // your app bg
-        ),
+        theme: ThemeData(scaffoldBackgroundColor: Colors.white),
         debugShowCheckedModeBanner: false,
-        home: const LoginScreen(),
+        home: const MainShell(),
         navigatorKey: NavigationService.navigatorKey,
       ),
     );

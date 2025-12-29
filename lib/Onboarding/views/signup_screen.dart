@@ -1,6 +1,6 @@
+import 'package:abc_app/core/components/Header_card.dart';
 import 'package:abc_app/onboarding/provider/auth_provider.dart';
 import 'package:abc_app/core/constant/color_constant.dart';
-import 'package:abc_app/core/components/custom_auth_card.dart';
 import 'package:abc_app/core/components/custom_button.dart';
 import 'package:abc_app/core/components/custom_icon_container.dart';
 import 'package:abc_app/core/components/custom_textfield.dart';
@@ -48,7 +48,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               Stack(
                 children: [
-                  CustomCard(),
+                  HeaderCard(),
                   Padding(
                     padding: const EdgeInsets.only(top: 32),
                     child: Center(

@@ -16,8 +16,9 @@ TextStyle primaryTextStyle({
     fontWeight: weight,
     color: color ?? ColorConstant.black,
     fontSize: size,
+
     // fontFeatures: features,
-    // decoration: decoration,
+    decoration: decoration,
     // decorationColor: decorationColor,
   );
 }

@@ -5,6 +5,7 @@ class CustomTextfield extends StatelessWidget {
   final Widget? hint;
   final Icon? prefixIcon;
   final Widget? suffix;
+  final Color? fillColor;
 
   final bool? obscureText;
   final TextEditingController? controller;
@@ -18,6 +19,7 @@ class CustomTextfield extends StatelessWidget {
     this.controller,
     this.validator,
     this.suffix,
+    this.fillColor,
   });
 
   @override
@@ -26,7 +28,7 @@ class CustomTextfield extends StatelessWidget {
       validator: validator,
       controller: controller,
       decoration: InputDecoration(
-        fillColor: ColorConstant.textfieldfill,
+        fillColor: fillColor ?? ColorConstant.textfieldfill,
         prefixIcon: prefixIcon,
         hint: hint,
         suffix: suffix,

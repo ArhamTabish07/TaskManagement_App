@@ -9,4 +9,6 @@ class IconConstants {
   static const people = '${_iconPath}people.png';
   static const task = '${_iconPath}task.png';
   static const membericon = '${_iconPath}member_icon.png';
+  static const subscriptionCard = '${_iconPath}SubscriptionCard.png';
+  static const checkicon = '${_iconPath}check_icon.png';
 }
