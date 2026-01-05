@@ -4,7 +4,8 @@ import 'package:task_management_app/core/components/custom_icon_container.dart';
 import 'package:task_management_app/core/components/custom_textfield.dart';
 import 'package:task_management_app/core/components/text_style.dart';
 import 'package:task_management_app/core/constant/color_constant.dart';
-import 'package:task_management_app/nav_bar/Home/widgets/group_card.dart';
+import 'package:task_management_app/nav_bar/Message/DirectChat/direct_chat_tab.dart';
+import 'package:task_management_app/nav_bar/Message/views/group_chat_tab.dart';
 import 'package:task_management_app/nav_bar/Subscription/widgets/subscription_tab.dart';
 
 // <-- if your AppSegmentedTab file name differs, change it
@@ -123,7 +124,7 @@ class _MessageScreenState extends State<MessageScreen> {
 
                       // container look
                       height: 56,
-                      borderRadius: 14,
+                      // borderRadius: 14,
                       backgroundColor: Colors.white, // outer container bg
                       borderColor: const Color(0xFFE5E7EB),
 
@@ -144,16 +145,10 @@ class _MessageScreenState extends State<MessageScreen> {
 
                     // ✅ change content based on tab
                     if (selectedIndex == 0) ...[
-                      GroupCard(),
-                      const SizedBox(height: 16),
-                      GroupCard(),
-                      const SizedBox(height: 16),
-                      GroupCard(),
+                      GroupChatTab(),
                     ] else ...[
                       // Direct chats list (replace with your widget)
-                      GroupCard(),
-                      const SizedBox(height: 16),
-                      GroupCard(),
+                      DirectChatTab(),
                     ],
 
                     const SizedBox(height: 24),

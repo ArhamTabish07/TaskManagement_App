@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:task_management_app/core/components/Header_card.dart';
 import 'package:task_management_app/core/components/custom_icon_container.dart';
 import 'package:task_management_app/core/components/custom_info_container.dart';
+import 'package:task_management_app/core/components/gradient_container.dart';
 import 'package:task_management_app/core/components/text_style.dart';
 import 'package:task_management_app/core/constant/color_constant.dart';
 import 'package:task_management_app/core/constant/icon_constant.dart';
@@ -161,13 +162,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text('My Groups', style: primaryTextStyle(size: 20)),
                         const Spacer(),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(200),
-                            gradient: const LinearGradient(
-                              colors: [Color(0xff155DFC), Color(0xff9810FA)],
-                            ),
-                          ),
+                        GradientContainer(
                           child: IconButton(
                             onPressed: () {
                               NavigationService().navigateToScreen(

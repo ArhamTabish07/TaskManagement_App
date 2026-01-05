@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+
+// Auth/User
 import 'package:task_management_app/onboarding/data/auth_data_source.dart';
 import 'package:task_management_app/onboarding/data/auth_repo_impl.dart';
 import 'package:task_management_app/onboarding/data/user_data_source.dart';
@@ -8,21 +10,40 @@ import 'package:task_management_app/onboarding/domain/user_repo.dart';
 import 'package:task_management_app/onboarding/provider/auth_provider.dart';
 import 'package:task_management_app/onboarding/provider/user_provider.dart';
 
+// Chat
+import 'package:task_management_app/nav_bar/Message/GroupChat/data/chat_datasource.dart';
+import 'package:task_management_app/nav_bar/Message/GroupChat/data/chat_repo_impl.dart';
+import 'package:task_management_app/nav_bar/Message/GroupChat/domain/chat_repo.dart';
+import 'package:task_management_app/nav_bar/Message/GroupChat/provider/chat_provider.dart';
+
 final DI = GetIt.instance;
 
 Future<void> setupDI() async {
-  // Services / repos
+  // =========================
+  // DATA SOURCES / SERVICES
+  // =========================
   DI.registerLazySingleton<AuthService>(() => AuthService());
+  DI.registerLazySingleton<UserDatasource>(() => UserDatasource());
+  DI.registerLazySingleton<ChatDatasource>(() => ChatDatasource());
 
+  // =========================
+  // REPOSITORIES
+  // =========================
   DI.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(authService: DI<AuthService>()),
   );
 
   DI.registerLazySingleton<UserRepository>(
-    () => UserRepositoryImpl(datasource: UserDatasource()),
+    () => UserRepositoryImpl(datasource: DI<UserDatasource>()),
   );
 
-  // Providers
+  DI.registerLazySingleton<ChatRepo>(
+    () => ChatRepoImpl(datasource: DI<ChatDatasource>()),
+  );
+
+  // =========================
+  // PROVIDERS (ChangeNotifiers)
+  // =========================
   DI.registerLazySingleton<UserProvider>(
     () => UserProvider(userRepo: DI<UserRepository>()),
   );
@@ -30,6 +51,13 @@ Future<void> setupDI() async {
   DI.registerLazySingleton<AuthenticationProvider>(
     () => AuthenticationProvider(
       authRepo: DI<AuthRepo>(),
+      userProvider: DI<UserProvider>(),
+    ),
+  );
+
+  DI.registerLazySingleton<ChatProvider>(
+    () => ChatProvider(
+      chatRepo: DI<ChatRepo>(),
       userProvider: DI<UserProvider>(),
     ),
   );

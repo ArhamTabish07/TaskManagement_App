@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/components/text_style.dart';
 
 class AppSegmentedTabItem {
   final String label;
@@ -12,12 +13,12 @@ class AppSegmentedTab extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onChanged;
 
-  final double height;
+  final double? height;
 
-  final double itemHeight;
+  // final double itemHeight;
 
-  final double borderRadius;
-  final EdgeInsets padding;
+  // final double borderRadius;
+  // final EdgeInsets padding;
   final Color? backgroundColor;
   final Color borderColor;
 
@@ -37,10 +38,10 @@ class AppSegmentedTab extends StatelessWidget {
     required this.items,
     required this.selectedIndex,
     required this.onChanged,
-    this.height = 56,
-    this.itemHeight = 44,
-    this.borderRadius = 14,
-    this.padding = const EdgeInsets.all(6),
+    this.height,
+    // this.itemHeight =
+    // this.borderRadius = 14,
+    // this.padding = const EdgeInsets.all(6),
     this.backgroundColor,
     this.borderColor = const Color(0xFFE5E7EB),
 
@@ -60,10 +61,10 @@ class AppSegmentedTab extends StatelessWidget {
 
     return Container(
       height: height,
-      padding: padding,
+      padding: EdgeInsets.all(6),
       decoration: BoxDecoration(
         color: backgroundColor ?? Colors.transparent,
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(color: borderColor),
       ),
       child: Row(
@@ -77,7 +78,7 @@ class AppSegmentedTab extends StatelessWidget {
               onTap: () => onChanged(index),
               child: Center(
                 child: AnimatedContainer(
-                  height: itemHeight, // ✅ pill height
+                  height: double.infinity, // ✅ pill height
                   duration: const Duration(milliseconds: 220),
                   curve: Curves.easeOut,
                   decoration: BoxDecoration(
@@ -85,7 +86,7 @@ class AppSegmentedTab extends StatelessWidget {
                         ? selectedColor
                         : (unselectedItemColor ?? Colors.transparent),
                     gradient: isSelected ? selectedGradient : null,
-                    borderRadius: BorderRadius.circular(borderRadius - 4),
+                    borderRadius: BorderRadius.circular(14),
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
@@ -108,9 +109,9 @@ class AppSegmentedTab extends StatelessWidget {
                           item.label,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                          style: primaryTextStyle(
+                            size: 14,
+                            weight: FontWeight.w500,
                             color: isSelected
                                 ? selectedTextColor
                                 : unselectedTextColor,

@@ -98,9 +98,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           AppSegmentedTabItem(label: 'Yearly'),
                         ],
 
-                        height: 46,
-                        borderRadius: 14,
+                        height: 52,
 
+                        // borderRadius: 14,
                         backgroundColor: ColorConstant.infocontainerwhite,
                         borderColor: Colors.white.withOpacity(0.22),
 

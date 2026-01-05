@@ -1,16 +1,17 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:task_management_app/Onboarding/views/login_screen.dart';
 import 'package:task_management_app/core/dependency_injection/di.dart';
 import 'package:task_management_app/core/service/navigation_service.dart';
-import 'package:task_management_app/firebase_options.dart';
-import 'package:task_management_app/nav_bar/main_shell.dart';
-import 'package:task_management_app/onboarding/provider/auth_provider.dart';
-import 'package:task_management_app/onboarding/provider/user_provider.dart';
 
-void main() async {
+import 'onboarding/provider/auth_provider.dart';
+import 'onboarding/provider/user_provider.dart';
+import 'nav_bar/Message/GroupChat/provider/chat_provider.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp();
   await setupDI();
 
   runApp(const MyApp());
@@ -23,16 +24,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<UserProvider>(create: (_) => DI<UserProvider>()),
-        ChangeNotifierProvider<AuthenticationProvider>(
-          create: (_) => DI<AuthenticationProvider>(),
-        ),
+        ChangeNotifierProvider.value(value: DI<UserProvider>()),
+        ChangeNotifierProvider.value(value: DI<AuthenticationProvider>()),
+        ChangeNotifierProvider.value(value: DI<ChatProvider>()),
       ],
       child: MaterialApp(
-        theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        debugShowCheckedModeBanner: false,
-        home: const MainShell(),
         navigatorKey: NavigationService.navigatorKey,
+        scaffoldMessengerKey: NavigationService.scaffoldMessengerKey,
+        debugShowCheckedModeBanner: false,
+        home: const LoginScreen(),
       ),
     );
   }

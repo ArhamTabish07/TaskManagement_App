@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:task_management_app/core/service/navigation_service.dart';
 import 'package:task_management_app/nav_bar/Home/home_screen.dart';
+import 'package:task_management_app/nav_bar/main_shell.dart';
 import 'package:task_management_app/onboarding/domain/auth_repo.dart';
 import 'package:task_management_app/onboarding/provider/user_provider.dart';
 
@@ -38,7 +39,7 @@ class AuthenticationProvider with ChangeNotifier {
       await userProvider.loadCurrentUser();
 
       NavigationService().pushReplacementToScreen(
-        nextScreen: const HomeScreen(),
+        nextScreen: const MainShell(),
       );
     } catch (e) {
       log("AuthProvider -> login error: $e");
@@ -67,7 +68,7 @@ class AuthenticationProvider with ChangeNotifier {
 
       // You can go directly to home after signup:
       NavigationService().pushReplacementToScreen(
-        nextScreen: const HomeScreen(),
+        nextScreen: const MainShell(),
       );
     } catch (e) {
       log("AuthProvider -> signup error: $e");
